@@ -6,144 +6,578 @@
   <title>Риша Розенберг — физический терапевт и тренер по ОФП</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
+    /* ─── RESET ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
     :root {
-      --cream: #f5f0e8; --warm-white: #faf8f3; --sand: #e8ddd0;
-      --terra: #c07b5a; --terra-dark: #a5623f;
-      --sage: #8a9e8a; --sage-light: #d4e0d4;
-      --dark: #2a2520; --mid: #5a524a; --light-text: #8a8078; --border: #ddd5c8;
+      --cream: #f5f0e8;
+      --warm-white: #faf8f3;
+      --sand: #e8ddd0;
+      --terra: #c07b5a;
+      --terra-dark: #a5623f;
+      --sage: #8a9e8a;
+      --sage-light: #d4e0d4;
+      --dark: #2a2520;
+      --mid: #5a524a;
+      --light-text: #8a8078;
+      --border: #ddd5c8;
     }
+ 
     html { scroll-behavior: smooth; }
-    body { font-family: "Inter", sans-serif; background: var(--warm-white); color: var(--dark); font-size: 16px; line-height: 1.7; }
-
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--warm-white);
+      color: var(--dark);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+ 
+    /* ════════════════════════════
+       BASE = MOBILE FIRST
+    ════════════════════════════ */
+ 
+    /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 60px;
-      background: rgba(250,248,243,0.95); backdrop-filter: blur(8px);
+      padding: 14px 20px;
+      background: rgba(250,248,243,0.97);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { font-family: "Cormorant Garamond", serif; font-size: 20px; font-weight: 600; color: var(--dark); text-decoration: none; letter-spacing: 0.02em; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--mid); font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--terra); }
-    .nav-cta { background: var(--terra); color: white !important; padding: 10px 24px; border-radius: 2px; transition: background 0.2s !important; }
-    .nav-cta:hover { background: var(--terra-dark) !important; }
-
-    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; }
-    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; }
-    .hero-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra); margin-bottom: 28px; }
-    .hero-h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(42px,5vw,64px); font-weight: 600; line-height: 1.12; color: var(--dark); margin-bottom: 28px; }
-    .hero-sub { font-size: 17px; line-height: 1.75; color: var(--mid); max-width: 460px; margin-bottom: 48px; font-weight: 300; }
-    .btn-primary { display: inline-block; background: var(--terra); color: white; text-decoration: none; padding: 16px 36px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; border-radius: 2px; transition: background 0.25s, transform 0.2s; align-self: flex-start; border: none; cursor: pointer; }
-    .btn-primary:hover { background: var(--terra-dark); transform: translateY(-1px); }
-    .hero-image { background: var(--sand); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .hero-image-placeholder { width: 100%; height: 100%; min-height: 600px; background: linear-gradient(135deg,#e8ddd0,#d4c9ba,#c8b8a5); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #9a8878; font-size: 14px; gap: 12px; }
-    .hero-image-placeholder .icon { font-size: 48px; opacity: 0.5; }
-    .hero-image-placeholder span { font-style: italic; opacity: 0.7; }
-
-    #about { background: var(--cream); padding: 120px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .about-image { background: linear-gradient(145deg,#d8cfc4,#c8bfb2); border-radius: 2px; height: 520px; display: flex; align-items: center; justify-content: center; color: #9a8878; font-size: 14px; flex-direction: column; gap: 10px; }
-    .about-image .icon { font-size: 40px; opacity: 0.45; }
-    .section-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra); margin-bottom: 20px; display: block; }
-    .section-h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(34px,4vw,48px); font-weight: 600; line-height: 1.15; color: var(--dark); margin-bottom: 28px; }
-    .body-text { font-size: 16px; line-height: 1.8; color: var(--mid); font-weight: 300; margin-bottom: 18px; }
-    .facts-row { display: flex; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 32px; }
-    .fact { flex: 1; padding-right: 24px; }
-    .fact:not(:last-child) { border-right: 1px solid var(--border); margin-right: 24px; }
-    .fact-num { font-family: "Cormorant Garamond", serif; font-size: 36px; font-weight: 600; color: var(--terra); line-height: 1; margin-bottom: 4px; }
-    .fact-label { font-size: 12px; color: var(--light-text); font-weight: 400; }
-
-    #forwho { padding: 120px 60px; background: var(--warm-white); text-align: center; }
-    #forwho .section-tag { text-align: center; }
-    #forwho .section-h2 { text-align: center; margin-bottom: 60px; }
-    .cards-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; max-width: 900px; margin: 0 auto; text-align: left; }
-    .card { background: var(--cream); padding: 40px 36px; border-radius: 2px; border-top: 3px solid var(--terra); transition: transform 0.2s, box-shadow 0.2s; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-    .card-icon { font-size: 28px; margin-bottom: 20px; display: block; }
-    .card-text { font-size: 15px; line-height: 1.75; color: var(--mid); font-weight: 300; }
-
-    #services { background: var(--dark); padding: 120px 60px; color: white; text-align: center; }
-    #services .section-tag { color: var(--terra); }
-    #services .section-h2 { color: white; margin-bottom: 60px; }
-    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; max-width: 900px; margin: 0 auto 60px; }
-    .service-card { background: rgba(255,255,255,0.04); padding: 52px 48px; text-align: left; transition: background 0.2s; }
-    .service-card:hover { background: rgba(255,255,255,0.07); }
-    .service-title { font-family: "Cormorant Garamond", serif; font-size: 28px; font-weight: 600; color: white; margin-bottom: 6px; }
-    .service-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terra); margin-bottom: 20px; font-weight: 500; }
-    .service-text { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.6); font-weight: 300; }
-    #services .btn-primary { margin: 0 auto; display: block; width: fit-content; }
-
-    #reviews { padding: 120px 60px; background: var(--cream); text-align: center; }
-    #reviews .section-h2 { margin-bottom: 60px; }
-    .carousel-wrap { display: flex; align-items: center; gap: 16px; max-width: 1100px; margin: 0 auto; }
+    .nav-logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 18px; font-weight: 600;
+      color: var(--dark); text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: none; }
+    .nav-cta-mobile {
+      background: var(--terra); color: white;
+      text-decoration: none;
+      padding: 9px 18px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border-radius: 2px;
+    }
+ 
+    /* ─── HERO ─── */
+    #hero {
+      display: flex;
+      flex-direction: column;
+      padding-top: 52px; /* nav height */
+    }
+    .hero-image {
+      order: -1;
+      width: 100%;
+      height: 70vw;
+      max-height: 420px;
+      min-height: 240px;
+      background: var(--sand);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-image-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, #e8ddd0, #d4c9ba, #c8b8a5);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; color: #9a8878;
+    }
+    .hero-image-placeholder .icon { font-size: 40px; opacity: 0.45; }
+    .hero-image-placeholder span { font-size: 13px; font-style: italic; opacity: 0.65; }
+    .hero-text {
+      padding: 36px 20px 52px;
+      display: flex; flex-direction: column;
+    }
+    .hero-tag {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--terra); margin-bottom: 14px;
+    }
+    .hero-h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px; font-weight: 600;
+      line-height: 1.15; color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 15px; line-height: 1.75;
+      color: var(--mid); font-weight: 300;
+      margin-bottom: 32px;
+    }
+    .btn-primary {
+      display: block;
+      background: var(--terra); color: white;
+      text-decoration: none;
+      padding: 17px 24px;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border-radius: 2px;
+      text-align: center;
+      border: none; cursor: pointer;
+      transition: background 0.25s;
+      width: 100%;
+    }
+    .btn-primary:hover { background: var(--terra-dark); }
+ 
+    /* ─── SECTION SHARED ─── */
+    .section-tag {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--terra); margin-bottom: 14px;
+      display: block;
+    }
+    .section-h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px; font-weight: 600;
+      line-height: 1.2; color: var(--dark);
+      margin-bottom: 24px;
+    }
+ 
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--cream);
+      padding: 60px 20px;
+    }
+    .about-image {
+      width: 100%;
+      height: 72vw; max-height: 360px; min-height: 220px;
+      background: linear-gradient(145deg, #d8cfc4, #c8bfb2);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+      color: #9a8878;
+      margin-bottom: 36px;
+    }
+    .about-image .icon { font-size: 36px; opacity: 0.4; }
+    .body-text {
+      font-size: 15px; line-height: 1.8;
+      color: var(--mid); font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .facts-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 32px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .fact { text-align: center; padding: 0 8px; }
+    .fact:not(:last-child) { border-right: 1px solid var(--border); }
+    .fact-num {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px; font-weight: 600;
+      color: var(--terra); line-height: 1;
+      margin-bottom: 4px;
+    }
+    .fact-label { font-size: 10px; color: var(--light-text); line-height: 1.4; }
+ 
+    /* ─── FOR WHO ─── */
+    #forwho {
+      padding: 60px 20px;
+      background: var(--warm-white);
+    }
+    #forwho .section-tag,
+    #forwho .section-h2 { text-align: center; }
+    #forwho .section-h2 { margin-bottom: 28px; }
+    .cards-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .card {
+      background: var(--cream);
+      padding: 24px 20px;
+      border-radius: 2px;
+      border-left: 3px solid var(--terra);
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .card-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .card-text { font-size: 14px; line-height: 1.7; color: var(--mid); font-weight: 300; }
+ 
+    /* ─── SERVICES ─── */
+    #services {
+      background: var(--dark);
+      padding: 60px 20px;
+      color: white;
+    }
+    #services .section-tag { color: var(--terra); text-align: center; }
+    #services .section-h2 { color: white; text-align: center; margin-bottom: 28px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      padding: 28px 24px;
+      text-align: left;
+    }
+    .service-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px; font-weight: 600;
+      color: white; margin-bottom: 6px;
+    }
+    .service-sub {
+      font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--terra);
+      margin-bottom: 14px; font-weight: 500;
+    }
+    .service-text {
+      font-size: 14px; line-height: 1.75;
+      color: rgba(255,255,255,0.6); font-weight: 300;
+    }
+    #services .btn-primary { max-width: 100%; }
+ 
+    /* ─── REVIEWS ─── */
+    #reviews {
+      padding: 60px 20px;
+      background: var(--cream);
+    }
+    #reviews .section-tag,
+    #reviews .section-h2 { text-align: center; }
+    #reviews .section-h2 { margin-bottom: 28px; }
+    .carousel-wrap {
+      display: flex; align-items: center; gap: 10px;
+    }
     .carousel-viewport { overflow: hidden; flex: 1; }
-    .carousel-track { display: flex; gap: 24px; transition: transform 0.4s ease; }
-    .review-slide { flex: 0 0 calc((100% - 48px) / 3); border-radius: 4px; overflow: hidden; }
-    .review-img-placeholder { width: 100%; aspect-ratio: 4/5; background: var(--sand); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--light-text); font-size: 13px; font-style: italic; border-radius: 4px; }
-    .review-slide img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 4px; display: block; }
-    .carousel-btn { background: white; border: 1px solid var(--border); color: var(--mid); width: 48px; height: 48px; border-radius: 50%; font-size: 18px; cursor: pointer; flex-shrink: 0; transition: background 0.2s, color 0.2s; }
-    .carousel-btn:hover { background: var(--terra); color: white; border-color: var(--terra); }
-    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s; }
+    .carousel-track {
+      display: flex; gap: 16px;
+      transition: transform 0.38s ease;
+    }
+    .review-slide {
+      flex: 0 0 100%;
+      border-radius: 4px; overflow: hidden;
+    }
+    .review-img-placeholder {
+      width: 100%; aspect-ratio: 4/5;
+      background: var(--sand);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; color: var(--light-text);
+      font-size: 13px; font-style: italic;
+      border-radius: 4px;
+    }
+    .review-slide img {
+      width: 100%; aspect-ratio: 4/5;
+      object-fit: cover; border-radius: 4px; display: block;
+    }
+    .carousel-btn {
+      background: white; border: 1px solid var(--border);
+      color: var(--mid); width: 38px; height: 38px;
+      border-radius: 50%; font-size: 15px;
+      cursor: pointer; flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+    .carousel-dots {
+      display: flex; justify-content: center;
+      gap: 8px; margin-top: 20px;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--border); cursor: pointer;
+      transition: background 0.2s;
+    }
     .dot.active { background: var(--terra); }
-
-    #how { padding: 80px 60px 60px; background: var(--warm-white); text-align: center; }
-    #how .section-h2 { margin-bottom: 72px; }
-    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; max-width: 900px; margin: 0 auto; position: relative; }
-    .steps::before { content: ""; position: absolute; top: 36px; left: calc(16.66% + 12px); right: calc(16.66% + 12px); height: 1px; background: var(--border); }
-    .step { padding: 0 32px; text-align: center; }
-    .step-num { width: 72px; height: 72px; border-radius: 50%; background: var(--terra); color: white; font-family: "Cormorant Garamond", serif; font-size: 28px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; position: relative; z-index: 1; }
-    .step-title { font-family: "Cormorant Garamond", serif; font-size: 22px; font-weight: 600; color: var(--dark); margin-bottom: 14px; }
-    .step-text { font-size: 14px; color: var(--mid); line-height: 1.75; font-weight: 300; }
-
-    #form-section { background: var(--warm-white); padding: 60px 60px 120px; }
-    .form-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .form-intro .section-h2 { margin-bottom: 20px; }
-    .form-note { font-size: 15px; color: var(--light-text); font-weight: 300; line-height: 1.7; }
-    .form-box { display: flex; flex-direction: column; gap: 16px; }
-    .form-box input { width: 100%; padding: 16px 20px; border: 1px solid var(--border); background: var(--cream); border-radius: 2px; font-size: 15px; font-family: "Inter", sans-serif; color: var(--dark); outline: none; transition: border-color 0.2s; }
+ 
+    /* ─── HOW ─── */
+    #how {
+      padding: 60px 20px;
+      background: var(--warm-white);
+    }
+    #how .section-tag,
+    #how .section-h2 { text-align: center; }
+    #how .section-h2 { margin-bottom: 40px; }
+    .steps {
+      display: flex; flex-direction: column; gap: 0;
+      max-width: 560px; margin: 0 auto;
+      position: relative;
+    }
+    /* vertical connector */
+    .steps::before {
+      content: "";
+      position: absolute;
+      left: 27px; top: 56px; bottom: 56px;
+      width: 1px; background: var(--border);
+      z-index: 0;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0 20px;
+      padding-bottom: 36px;
+    }
+    .step:last-child { padding-bottom: 0; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--terra); color: white;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+      grid-row: 1 / 3; align-self: start;
+    }
+    .step-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px; font-weight: 600;
+      color: var(--dark); margin-bottom: 6px;
+      align-self: center;
+    }
+    .step-text {
+      font-size: 14px; color: var(--mid);
+      line-height: 1.7; font-weight: 300;
+    }
+ 
+    /* ─── FORM ─── */
+    #form-section {
+      padding: 60px 20px 72px;
+      background: var(--warm-white);
+    }
+    .form-inner {
+      display: flex; flex-direction: column; gap: 32px;
+    }
+    .form-intro .section-h2 { margin-bottom: 12px; }
+    .form-note {
+      font-size: 14px; color: var(--light-text);
+      font-weight: 300; line-height: 1.7;
+    }
+    .form-box { display: flex; flex-direction: column; gap: 14px; }
+    .form-box input {
+      width: 100%; padding: 16px 18px;
+      border: 1px solid var(--border);
+      background: var(--cream); border-radius: 2px;
+      font-size: 15px; font-family: "Inter", sans-serif;
+      color: var(--dark); outline: none;
+      transition: border-color 0.2s;
+    }
     .form-box input:focus { border-color: var(--terra); }
     .form-box input::placeholder { color: var(--light-text); }
-    .form-box .btn-primary { width: 100%; text-align: center; padding: 18px; font-size: 13px; }
-    .form-legal { font-size: 11px; color: var(--light-text); text-align: center; line-height: 1.5; }
-    .success-msg { display: none; background: var(--sage-light); color: var(--sage); padding: 16px 20px; border-radius: 2px; font-size: 14px; text-align: center; border: 1px solid var(--sage); }
-
-    footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-    .footer-logo { font-family: "Cormorant Garamond", serif; font-size: 18px; color: white; font-weight: 600; }
-    .footer-links { display: flex; gap: 28px; }
-    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .form-legal {
+      font-size: 11px; color: var(--light-text);
+      text-align: center; line-height: 1.5;
+    }
+    .success-msg {
+      display: none;
+      background: var(--sage-light); color: var(--sage);
+      padding: 16px 20px; border-radius: 2px;
+      font-size: 14px; text-align: center;
+      border: 1px solid var(--sage);
+    }
+ 
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      padding: 36px 20px;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 16px;
+      font-size: 13px; text-align: center;
+    }
+    .footer-logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 18px; color: white; font-weight: 600;
+    }
+    .footer-links {
+      display: flex; flex-direction: column;
+      gap: 12px; align-items: center;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none; transition: color 0.2s;
+    }
     .footer-links a:hover { color: var(--terra); }
-
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; } .nav-links { display: none; }
-      #hero { grid-template-columns: 1fr; } .hero-text { padding: 60px 24px 48px; } .hero-image { min-height: 340px; }
-      #about { grid-template-columns: 1fr; padding: 80px 24px; gap: 40px; } .about-image { height: 300px; }
-      #forwho { padding: 80px 24px; } .cards-row { grid-template-columns: 1fr; }
-      #services { padding: 80px 24px; } .services-grid { grid-template-columns: 1fr; }
-      #reviews { padding: 80px 24px; } .review-slide { flex: 0 0 100%; } .carousel-wrap { gap: 10px; }
-      #how { padding: 80px 24px; } .steps { grid-template-columns: 1fr; gap: 40px; } .steps::before { display: none; }
-      #form-section { padding: 80px 24px; } .form-inner { grid-template-columns: 1fr; gap: 48px; }
-      footer { flex-direction: column; gap: 20px; padding: 32px 24px; text-align: center; }
+ 
+    /* ════════════════════════════
+       DESKTOP — min-width: 900px
+    ════════════════════════════ */
+    @media (min-width: 900px) {
+ 
+      /* Nav */
+      nav { padding: 20px 60px; }
+      .nav-logo { font-size: 20px; }
+      .nav-links {
+        display: flex; gap: 36px; list-style: none; align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none; color: var(--mid);
+        font-size: 13px; font-weight: 400;
+        letter-spacing: 0.06em; text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover { color: var(--terra); }
+      .nav-cta-d {
+        background: var(--terra); color: white !important;
+        padding: 10px 24px; border-radius: 2px;
+        transition: background 0.2s !important;
+      }
+      .nav-cta-d:hover { background: var(--terra-dark) !important; }
+      .nav-cta-mobile { display: none; }
+ 
+      /* Hero */
+      #hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        padding-top: 80px;
+        flex-direction: unset;
+      }
+      .hero-image {
+        order: 0;
+        height: auto; max-height: none; min-height: 600px;
+      }
+      .hero-text {
+        padding: 80px 60px;
+        justify-content: center;
+      }
+      .hero-tag { font-size: 11px; margin-bottom: 28px; }
+      .hero-h1 { font-size: clamp(42px, 5vw, 64px); margin-bottom: 28px; line-height: 1.12; }
+      .hero-sub { font-size: 17px; margin-bottom: 48px; max-width: 460px; }
+      .btn-primary {
+        display: inline-block; width: auto;
+        padding: 16px 36px;
+        align-self: flex-start;
+        transform: none;
+      }
+      .btn-primary:hover { transform: translateY(-1px); }
+ 
+      /* Section shared */
+      .section-tag { font-size: 11px; }
+      .section-h2 { font-size: clamp(34px, 4vw, 48px); margin-bottom: 28px; }
+ 
+      /* About */
+      #about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px; align-items: center;
+        padding: 120px 60px;
+      }
+      .about-image {
+        height: 520px; max-height: none; min-height: unset;
+        margin-bottom: 0;
+        width: auto;
+      }
+      .body-text { font-size: 16px; }
+      .facts-row { padding-top: 32px; margin-top: 40px; }
+      .fact { text-align: left; padding: 0 24px 0 0; }
+      .fact:not(:last-child) { border-right: 1px solid var(--border); margin-right: 24px; }
+      .fact-num { font-size: 36px; }
+      .fact-label { font-size: 12px; }
+ 
+      /* For who */
+      #forwho { padding: 120px 60px; }
+      #forwho .section-h2 { margin-bottom: 60px; }
+      .cards-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px; max-width: 900px; margin: 0 auto;
+      }
+      .card {
+        flex-direction: column; gap: 0;
+        padding: 40px 36px;
+        border-left: none; border-top: 3px solid var(--terra);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+      .card-icon { font-size: 28px; margin-bottom: 20px; }
+      .card-text { font-size: 15px; }
+ 
+      /* Services */
+      #services { padding: 120px 60px; }
+      #services .section-h2 { margin-bottom: 60px; }
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+        max-width: 900px; margin: 0 auto 60px;
+      }
+      .service-card { padding: 52px 48px; }
+      .service-card:hover { background: rgba(255,255,255,0.07); }
+      .service-title { font-size: 28px; }
+      .service-text { font-size: 15px; }
+      #services .btn-primary {
+        display: block; width: fit-content; margin: 0 auto;
+      }
+ 
+      /* Reviews */
+      #reviews { padding: 120px 60px; }
+      #reviews .section-h2 { margin-bottom: 60px; }
+      .carousel-wrap { gap: 16px; max-width: 1100px; margin: 0 auto; }
+      .carousel-btn { width: 48px; height: 48px; font-size: 18px; }
+      .carousel-btn:hover { background: var(--terra); color: white; border-color: var(--terra); }
+      .review-slide { flex: 0 0 calc((100% - 32px) / 3); }
+ 
+      /* How */
+      #how { padding: 100px 60px 80px; }
+      #how .section-h2 { margin-bottom: 72px; }
+      .steps {
+        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 900px; position: relative;
+      }
+      .steps::before {
+        top: 28px; left: calc(16.66% + 12px);
+        right: calc(16.66% + 12px);
+        bottom: auto; width: auto; height: 1px;
+      }
+      .step {
+        display: block;
+        padding: 0 32px 0; text-align: center;
+      }
+      .step-num {
+        width: 56px; height: 56px;
+        margin: 0 auto 24px;
+        grid-row: auto;
+      }
+      .step-title { font-size: 22px; margin-bottom: 14px; }
+      .step-text { font-size: 14px; }
+ 
+      /* Form */
+      #form-section { padding: 80px 60px 120px; }
+      .form-inner {
+        flex-direction: row;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px; align-items: center;
+        max-width: 1000px; margin: 0 auto;
+      }
+ 
+      /* Footer */
+      footer {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 40px 60px;
+        text-align: left;
+      }
+      .footer-links {
+        flex-direction: row;
+        gap: 28px;
+      }
     }
   </style>
 </head>
 <body>
-
+ 
+<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">Риша Розенберг</a>
   <ul class="nav-links">
     <li><a href="#about">Обо мне</a></li>
     <li><a href="#services">Услуги</a></li>
-    <li><a href="#form-section" class="nav-cta">Записаться</a></li>
+    <li><a href="#form-section" class="nav-cta-d">Записаться</a></li>
   </ul>
+  <a href="#form-section" class="nav-cta-mobile">Записаться</a>
 </nav>
-
+ 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-text">
-    <p class="hero-tag">Физический терапевт и тренер по ОФП</p>
-    <h1 class="hero-h1">Сильное, здоровое и функциональное тело — несмотря на возраст, травмы, роды и всё остальное</h1>
-    <p class="hero-sub">Работаю с теми, кто хочет быть здоровым, сильным и активным — и не верит, что возраст это отменяет. Моей младшей ученице 8 лет, старшей — 63.</p>
+    <p class="hero-tag">Физический терапевт · Тренер по ОФП</p>
+    <h1 class="hero-h1">Сильное и здоровое тело — несмотря на возраст, травмы и всё остальное</h1>
+    <p class="hero-sub">Работаю с теми, кто хочет быть здоровым и сильным — и верит, что возраст это не отменяет.</p>
     <a href="#form-section" class="btn-primary">Записаться на консультацию</a>
   </div>
   <div class="hero-image">
@@ -153,38 +587,60 @@
     </div>
   </div>
 </section>
-
+ 
+<!-- ABOUT -->
 <section id="about">
   <div class="about-image">
     <span class="icon">🌿</span>
-    <span style="font-size:13px;font-style:italic;opacity:0.7">Живое фото</span>
+    <span style="font-size:12px;font-style:italic;opacity:0.6">Живое фото</span>
   </div>
   <div>
     <p class="section-tag">Обо мне</p>
-    <h2 class="section-h2">Я знаю, каково это — когда тело болит, а ты всё равно выходишь на старт</h2>
-    <p class="body-text">С 11 лет занималась лёгкой атлетикой. Финишировала 50 км по спортивной ходьбе — с больными коленями и спиной. Не потому что было легко. А потому что умела терпеть. Потом долго разбиралась, почему тело болит и что с этим делать.</p>
-    <p class="body-text">С 2018 года работаю тренером. Начинала с бега — но быстро поняла: многим нужно сначала разобраться со стопами, сколиозом, болью в спине. Покорять километры потом, когда тело к этому готово. Я знаю это не из книжки — я сама через это прошла.</p>
-    <p class="body-text">Сейчас работаю по ОФП — это общая физическая подготовка: сила, выносливость, гибкость, координация. Не один навык, а всё тело сразу — гармонично, без перекосов. Именно ОФП даёт ту базу, с которой потом можно всё: бегать, плавать, кататься на лыжах, просто хорошо себя чувствовать каждый день.</p>
-    <p class="body-text">Параллельно учусь в РУС ГЦОЛИФК — это главный спортивный вуз страны — на кафедре адаптивной физической культуры. Это образование позволяет работать не только со здоровыми людьми, но и с тяжёлыми диагнозами: ДЦП, последствия травм после аварий, нейрологические нарушения. Это значит, что к каждому телу я подхожу внимательно — с пониманием, что за «просто болит спина» или «хочу прийти в форму» может стоять очень разная история.</p>
+    <h2 class="section-h2">Я сама знаю, каково это — когда тело болит, а ты всё равно выходишь на старт</h2>
+    <p class="body-text">С 11 лет в лёгкой атлетике. Финишировала 50 км по спортивной ходьбе с больными коленями и спиной — и потом долго разбиралась, почему тело болит и что с этим делать.</p>
+    <p class="body-text">С 2018 года работаю тренером по ОФП — сила, выносливость, гибкость, координация. Не один навык, а всё тело сразу, гармонично. Параллельно учусь в РУС ГЦОЛИФК на кафедре адаптивной физкультуры — умею работать со многими диагнозами и историями тела.</p>
     <div class="facts-row">
-      <div class="fact"><div class="fact-num">с 2018</div><div class="fact-label">работаю тренером</div></div>
-      <div class="fact"><div class="fact-num">РУС</div><div class="fact-label">ГЦОЛИФК, адаптивная физкультура</div></div>
-      <div class="fact"><div class="fact-num">10+</div><div class="fact-label">дополнительных обучений</div></div>
+      <div class="fact">
+        <div class="fact-num">с 2018</div>
+        <div class="fact-label">работаю тренером</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">РУС</div>
+        <div class="fact-label">ГЦОЛИФК, адаптивная физкультура</div>
+      </div>
+      <div class="fact">
+        <div class="fact-num">10+</div>
+        <div class="fact-label">дополнительных обучений</div>
+      </div>
     </div>
   </div>
 </section>
-
+ 
+<!-- FOR WHO -->
 <section id="forwho">
   <p class="section-tag">Для кого</p>
   <h2 class="section-h2">Это для тебя, если...</h2>
   <div class="cards-row">
-    <div class="card"><span class="card-icon">😮‍💨</span><p class="card-text">Просыпаешься — и первое, что чувствуешь, это спина. Или колени. Или шея. И уже привык(ла), что «ну так и есть».</p></div>
-    <div class="card"><span class="card-icon">🔄</span><p class="card-text">Уже не первый год собираешься начать — пробовал(а) клубы, ролики, марафоны. Бросал(а), потому что либо слишком жёстко, либо просто не для тебя.</p></div>
-    <div class="card"><span class="card-icon">🩺</span><p class="card-text">Врач говорит «больше двигайтесь» — но как именно двигаться с твоими диагнозами и историей тела, никто не объясняет.</p></div>
-    <div class="card"><span class="card-icon">💪</span><p class="card-text">Хочешь чувствовать себя сильным и живым — и перестать объяснять ограничения старыми травмами или возрастом.</p></div>
+    <div class="card">
+      <span class="card-icon">😮‍💨</span>
+      <p class="card-text">Просыпаешься — и первое, что чувствуешь, это спина. Или колени. Уже привык(ла), что «ну так и есть».</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔄</span>
+      <p class="card-text">Уже не первый год собираешься начать. Бросал(а), потому что слишком жёстко или просто не для тебя.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🩺</span>
+      <p class="card-text">Врач говорит «больше двигайтесь» — но как двигаться с твоими диагнозами, никто не объясняет.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💪</span>
+      <p class="card-text">Хочешь чувствовать себя сильным и живым — и перестать объяснять ограничения возрастом или старыми травмами.</p>
+    </div>
   </div>
 </section>
-
+ 
+<!-- SERVICES -->
 <section id="services">
   <p class="section-tag">Услуги</p>
   <h2 class="section-h2">Как мы можем работать</h2>
@@ -192,39 +648,41 @@
     <div class="service-card">
       <div class="service-sub">Индивидуально</div>
       <div class="service-title">Персональные тренировки</div>
-      <p class="service-text">Программа строится под тебя: твой опыт, травмы, запросы и ритм жизни. Работаем онлайн по видео — я вижу тебя и твою технику, показываю, поправляю, объясняю прямо во время тренировки.</p>
+      <p class="service-text">Программа строится под тебя: опыт, травмы, ритм жизни. Онлайн по видео — вижу технику, поправляю прямо на тренировке.</p>
     </div>
     <div class="service-card">
       <div class="service-sub">В группе</div>
       <div class="service-title">Групповые занятия</div>
-      <p class="service-text">Чистое ОФП в конкретное время и дни — до 10 человек. Общий план для всех, зато выгоднее. Хорошо подходит тем, кому достаточно структурированной тренировки без индивидуального разбора.</p>
+      <p class="service-text">ОФП в конкретное время — до 10 человек. Структура и дисциплина без индивидуального разбора, зато выгоднее.</p>
     </div>
   </div>
   <a href="#form-section" class="btn-primary">Узнать подробнее — записаться</a>
 </section>
-
+ 
+<!-- REVIEWS -->
 <section id="reviews">
-  <p class="section-tag" style="text-align:center;">Отзывы</p>
-  <h2 class="section-h2" style="text-align:center;">Что говорят ученики</h2>
+  <p class="section-tag">Отзывы</p>
+  <h2 class="section-h2">Что говорят ученики</h2>
   <div class="carousel-wrap">
     <button class="carousel-btn" onclick="moveCarousel(-1)">&#8592;</button>
     <div class="carousel-viewport">
       <div class="carousel-track" id="carouselTrack">
-        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:36px;opacity:0.3;">🖼</span><span>Отзыв 1</span></div></div>
-        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:36px;opacity:0.3;">🖼</span><span>Отзыв 2</span></div></div>
-        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:36px;opacity:0.3;">🖼</span><span>Отзыв 3</span></div></div>
-        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:36px;opacity:0.3;">🖼</span><span>Отзыв 4</span></div></div>
-        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:36px;opacity:0.3;">🖼</span><span>Отзыв 5</span></div></div>
+        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:32px;opacity:0.25">🖼</span><span>Отзыв 1</span></div></div>
+        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:32px;opacity:0.25">🖼</span><span>Отзыв 2</span></div></div>
+        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:32px;opacity:0.25">🖼</span><span>Отзыв 3</span></div></div>
+        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:32px;opacity:0.25">🖼</span><span>Отзыв 4</span></div></div>
+        <div class="review-slide"><div class="review-img-placeholder"><span style="font-size:32px;opacity:0.25">🖼</span><span>Отзыв 5</span></div></div>
       </div>
     </div>
     <button class="carousel-btn" onclick="moveCarousel(1)">&#8594;</button>
   </div>
   <div class="carousel-dots" id="carouselDots"></div>
 </section>
-
+ 
+<!-- HOW -->
 <section id="how">
-  <p class="section-tag" style="text-align:center;">Как это работает</p>
-  <h2 class="section-h2" style="text-align:center;">Три шага до первой тренировки</h2>
+  <p class="section-tag">Как это работает</p>
+  <h2 class="section-h2">Три шага до первой тренировки</h2>
   <div class="steps">
     <div class="step">
       <div class="step-num">1</div>
@@ -234,22 +692,23 @@
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-title">Первая тренировка</div>
-      <p class="step-text">Встречаемся онлайн: узнаю твой опыт, историю тела, провожу небольшое тестирование — и сразу делаем лёгкую оздоровительную тренировку вместе.</p>
+      <p class="step-text">Знакомимся онлайн, разбираю историю тела — и сразу делаем лёгкую тренировку вместе.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-title">Тренируемся</div>
-      <p class="step-text">Работаем в полную силу — постепенно повышая сложность. Программа учитывает твои диагнозы, ограничения и то, как тело реагирует на нагрузку.</p>
+      <p class="step-text">Постепенно набираем сложность. Программа учитывает диагнозы и реакцию тела.</p>
     </div>
   </div>
 </section>
-
+ 
+<!-- FORM -->
 <section id="form-section">
   <div class="form-inner">
     <div class="form-intro">
       <p class="section-tag">Записаться</p>
-      <h2 class="section-h2">Запишись на консультацию</h2>
-      <p class="form-note" style="margin-bottom:16px;">Первая консультация бесплатна и ни к чему не обязывает.</p>
+      <h2 class="section-h2">Запишись на бесплатную консультацию</h2>
+      <p class="form-note">Первая консультация бесплатна и ни к чему не обязывает. Просто разберёмся, что происходит и как можно помочь.</p>
     </div>
     <div>
       <form class="form-box" onsubmit="submitForm(event)">
@@ -262,71 +721,86 @@
     </div>
   </div>
 </section>
-
+ 
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Риша Розенберг</div>
- <div style="font-size:12px;">Физический терапевт и тренер по ОФП</div>
+  <div style="font-size:11px;opacity:0.6">Физический терапевт и тренер по ОФП</div>
   <div class="footer-links">
     <a href="https://www.instagram.com/risha.rozenberg/">Instagram</a>
     <a href="https://t.me/risha_health">Telegram</a>
     <a href="politika.html">Политика конфиденциальности</a>
   </div>
 </footer>
-
+ 
 <script>
-  (function() {
-    const track = document.getElementById("carouselTrack");
-    const dotsEl = document.getElementById("carouselDots");
-    const slides = track.querySelectorAll(".review-slide");
-    const isMobile = () => window.innerWidth <= 900;
-    const visibleCount = () => isMobile() ? 1 : 3;
-    let current = 0;
-    function totalSteps() { return slides.length - visibleCount() + 1; }
-    function buildDots() {
-      dotsEl.innerHTML = "";
-      for (let i = 0; i < totalSteps(); i++) {
-        const d = document.createElement("div");
-        d.className = "dot" + (i === current ? " active" : "");
-        d.onclick = () => goTo(i);
-        dotsEl.appendChild(d);
-      }
+(function () {
+  const track = document.getElementById("carouselTrack");
+  const dotsEl = document.getElementById("carouselDots");
+  const slides = track.querySelectorAll(".review-slide");
+  const isDesktop = () => window.innerWidth >= 900;
+  const visibleCount = () => isDesktop() ? 3 : 1;
+  let current = 0;
+ 
+  function totalSteps() { return Math.max(1, slides.length - visibleCount() + 1); }
+ 
+  function buildDots() {
+    dotsEl.innerHTML = "";
+    for (let i = 0; i < totalSteps(); i++) {
+      const d = document.createElement("div");
+      d.className = "dot" + (i === current ? " active" : "");
+      d.onclick = () => goTo(i);
+      dotsEl.appendChild(d);
     }
-    function goTo(n) {
-      current = Math.max(0, Math.min(n, totalSteps() - 1));
-      const slideW = slides[0].offsetWidth + 24;
-      track.style.transform = "translateX(-" + (current * slideW) + "px)";
-      buildDots();
-    }
-    window.moveCarousel = function(dir) { goTo(current + dir); };
-    window.addEventListener("resize", () => goTo(0));
-    buildDots();
-  })();
-
-  async function submitForm(e) {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.querySelector('input[type="text"]').value;
-    const contact = form.querySelectorAll('input[type="text"]')[1].value;
-    const token = "8868382210:AAF7m5X9_EzTQCvIfvpOXpWnPhfDdF6cSGs";
-    const chatId = "1182607001";
-    const text = `🔔 Новая заявка с сайта!\n\n👤 Имя: ${name}\n📱 Контакт: ${contact}`;
-    try {
-      await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: chatId, text: text })
-      });
-    } catch(err) { console.error(err); }
-    document.getElementById("success").style.display = "block";
-    form.querySelector(".btn-primary").style.display = "none";
   }
-
-  document.querySelectorAll("a[href^=\"#\"]").forEach(a => {
-    a.addEventListener("click", function(e) {
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: "smooth", block: "start" }); }
-    });
+ 
+  function goTo(n) {
+    current = Math.max(0, Math.min(n, totalSteps() - 1));
+    const gap = isDesktop() ? 24 : 16;
+    const slideW = slides[0].offsetWidth + gap;
+    track.style.transform = "translateX(-" + (current * slideW) + "px)";
+    buildDots();
+  }
+ 
+  window.moveCarousel = function (dir) { goTo(current + dir); };
+  window.addEventListener("resize", () => { current = 0; goTo(0); });
+  buildDots();
+ 
+  // Touch swipe
+  let tx = 0;
+  track.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener("touchend", e => {
+    const diff = tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) moveCarousel(diff > 0 ? 1 : -1);
   });
+})();
+ 
+async function submitForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const inputs = form.querySelectorAll('input[type="text"]');
+  const name = inputs[0].value;
+  const contact = inputs[1].value;
+  const token = "8868382210:AAF7m5X9_EzTQCvIfvpOXpWnPhfDdF6cSGs";
+  const chatId = "1182607001";
+  const text = `🔔 Новая заявка с сайта!\n\n👤 Имя: ${name}\n📱 Контакт: ${contact}`;
+  try {
+    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, text })
+    });
+  } catch (err) { console.error(err); }
+  document.getElementById("success").style.display = "block";
+  form.querySelector(".btn-primary").style.display = "none";
+}
+ 
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener("click", function (e) {
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  });
+});
 </script>
 </body>
 </html>
